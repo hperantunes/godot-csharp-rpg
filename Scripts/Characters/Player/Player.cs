@@ -16,6 +16,7 @@ public partial class Player : CharacterBody3D
         Velocity *= speed;
 
         MoveAndSlide();
+        AnimateMovement(Velocity);
     }
 
     public override void _Input(InputEvent @event)
@@ -25,12 +26,23 @@ public partial class Player : CharacterBody3D
             GameConstants.InputMoveRight,
             GameConstants.InputMoveForward,
             GameConstants.InputMoveBackward);
+    }
 
-        var isMoving = direction != Vector2.Zero;
-        var animation = isMoving
-            ? GameConstants.AnimationMove
-            : GameConstants.AnimationIdle;
+    private void AnimateMovement(Vector3 velocity)
+    {
+        if (velocity == Vector3.Zero)
+        {
+            animationPlayer.Play(GameConstants.AnimationIdle);
+            return;
+        }
 
-        animationPlayer.Play(animation);
+        animationPlayer.Play(GameConstants.AnimationMove);
+
+        if (velocity.X == 0)
+        {
+            return;
+        }
+
+        sprite.FlipH = velocity.X < 0;
     }
 }
