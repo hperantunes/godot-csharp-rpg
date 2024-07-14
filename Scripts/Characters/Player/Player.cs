@@ -3,8 +3,17 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
+    [ExportGroup("Required Nodes")]
+    [Export] private AnimationPlayer animationPlayer;
+    [Export] private Sprite3D sprite;
+
     private Vector2 direction = new();
     private int speed = 5;
+
+    public override void _Ready()
+    {
+        
+    }
 
     public override void _PhysicsProcess(double delta)
     {
