@@ -4,8 +4,8 @@ using System;
 public partial class Player : CharacterBody3D
 {
     [ExportGroup("Required Nodes")]
-    [Export] private AnimationPlayer animationPlayer;
-    [Export] private Sprite3D sprite;
+    [Export] public AnimationPlayer AnimationPlayer;
+    [Export] public Sprite3D Sprite;
 
     private Vector2 direction = new();
     private int speed = 5;
@@ -16,7 +16,7 @@ public partial class Player : CharacterBody3D
         Velocity *= speed;
 
         MoveAndSlide();
-        AnimateMovement(Velocity);
+        ChangeDirection(Velocity);
     }
 
     public override void _Input(InputEvent @event)
@@ -28,21 +28,12 @@ public partial class Player : CharacterBody3D
             GameConstants.InputMoveBackward);
     }
 
-    private void AnimateMovement(Vector3 velocity)
+    private void ChangeDirection(Vector3 velocity)
     {
-        if (velocity == Vector3.Zero)
-        {
-            animationPlayer.Play(GameConstants.AnimationIdle);
-            return;
-        }
-
-        animationPlayer.Play(GameConstants.AnimationMove);
-
         if (velocity.X == 0)
         {
             return;
         }
-
-        sprite.FlipH = velocity.X < 0;
+        Sprite.FlipH = velocity.X < 0;
     }
 }
