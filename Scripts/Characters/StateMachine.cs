@@ -18,7 +18,9 @@ public partial class StateMachine : Node
         {
             return;
         }
-        newState.Notification(5001);
+
+        currentState.Notification(5002);
         currentState = newState;
+        currentState.Notification(5001);
     }
 }
