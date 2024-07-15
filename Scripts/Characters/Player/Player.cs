@@ -19,4 +19,13 @@ public partial class Player : CharacterBody3D
             GameConstants.InputMoveForward,
             GameConstants.InputMoveBackward);
     }
+
+    public void Flip()
+    {
+        if (Direction.X == 0)
+        {
+            return;
+        }
+        Sprite.FlipH = Direction.X < 0;
+    }
 }
