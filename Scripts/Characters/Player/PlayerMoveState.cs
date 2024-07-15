@@ -17,7 +17,14 @@ public partial class PlayerMoveState : Node
         if (character.Direction == Vector2.Zero)
         {
             character.StateMachine.ChangeState<PlayerIdleState>();
+            return;
         }
+
+        character.Velocity = new(character.Direction.X, 0, character.Direction.Y);
+        character.Velocity *= character.Speed;
+        character.MoveAndSlide();
+        
+        Flip(character.Direction);
     }
 
     public override void _Notification(int what)
@@ -42,5 +49,14 @@ public partial class PlayerMoveState : Node
         {
             character.StateMachine.ChangeState<PlayerDashState>();
         }
+    }
+
+    private void Flip(Vector2 direction)
+    {
+        if (direction.X == 0)
+        {
+            return;
+        }
+        character.Sprite.FlipH = direction.X < 0;
     }
 }

@@ -125,5 +125,10 @@ script = ExtResource("32_httld")
 [node name="MoveState" type="Node" parent="StateMachine"]
 script = ExtResource("33_j45tm")
 
-[node name="DashState" type="Node" parent="StateMachine"]
+[node name="DashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dashTimer")]
 script = ExtResource("41_33r1i")
+dashTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/DashState"]
+wait_time = 0.4
+one_shot = true

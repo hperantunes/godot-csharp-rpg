@@ -9,17 +9,7 @@ public partial class Player : CharacterBody3D
     [Export] public StateMachine StateMachine;
 
     public Vector2 Direction = new();
-
-    private int speed = 5;
-
-    public override void _PhysicsProcess(double delta)
-    {
-        Velocity = new(Direction.X, 0, Direction.Y);
-        Velocity *= speed;
-
-        MoveAndSlide();
-        ChangeDirection(Direction);
-    }
+    public int Speed = 5;
 
     public override void _Input(InputEvent @event)
     {
@@ -28,14 +18,5 @@ public partial class Player : CharacterBody3D
             GameConstants.InputMoveRight,
             GameConstants.InputMoveForward,
             GameConstants.InputMoveBackward);
-    }
-
-    private void ChangeDirection(Vector2 direction)
-    {
-        if (direction.X == 0)
-        {
-            return;
-        }
-        Sprite.FlipH = direction.X < 0;
     }
 }
