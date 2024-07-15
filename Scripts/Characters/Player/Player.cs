@@ -6,34 +6,36 @@ public partial class Player : CharacterBody3D
     [ExportGroup("Required Nodes")]
     [Export] public AnimationPlayer AnimationPlayer;
     [Export] public Sprite3D Sprite;
+    [Export] public StateMachine StateMachine;
 
-    private Vector2 direction = new();
+    public Vector2 Direction = new();
+
     private int speed = 5;
 
     public override void _PhysicsProcess(double delta)
     {
-        Velocity = new(direction.X, 0, direction.Y);
+        Velocity = new(Direction.X, 0, Direction.Y);
         Velocity *= speed;
 
         MoveAndSlide();
-        ChangeDirection(Velocity);
+        ChangeDirection(Direction);
     }
 
     public override void _Input(InputEvent @event)
     {
-        direction = Input.GetVector(
+        Direction = Input.GetVector(
             GameConstants.InputMoveLeft,
             GameConstants.InputMoveRight,
             GameConstants.InputMoveForward,
             GameConstants.InputMoveBackward);
     }
 
-    private void ChangeDirection(Vector3 velocity)
+    private void ChangeDirection(Vector2 direction)
     {
-        if (velocity.X == 0)
+        if (direction.X == 0)
         {
             return;
         }
-        Sprite.FlipH = velocity.X < 0;
+        Sprite.FlipH = direction.X < 0;
     }
 }
