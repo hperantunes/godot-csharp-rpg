@@ -1,17 +1,8 @@
 using Godot;
 using System;
 
-public partial class PlayerMoveState : Node
+public partial class PlayerMoveState : PlayerState
 {
-    private Player character;
-
-    public override void _Ready()
-    {
-        character = GetOwner<Player>();
-        SetPhysicsProcess(false);
-        SetProcessInput(false);
-    }
-
     public override void _PhysicsProcess(double delta)
     {
         if (character.Direction == Vector2.Zero)
@@ -26,27 +17,17 @@ public partial class PlayerMoveState : Node
         character.Flip();
     }
 
-    public override void _Notification(int what)
-    {
-        base._Notification(what);
-        if (what == 5001)
-        {
-            SetPhysicsProcess(true);
-            SetProcessInput(true);
-            character.AnimationPlayer.Play(GameConstants.AnimationMove);
-        }
-        else if (what == 5002)
-        {
-            SetPhysicsProcess(false);
-            SetProcessInput(false);
-        }
-    }
-
     public override void _Input(InputEvent @event)
     {
         if (Input.IsActionJustPressed(GameConstants.InputDash))
         {
             character.StateMachine.ChangeState<PlayerDashState>();
         }
+    }
+
+    protected override void EnterState()
+    {
+        base.EnterState();
+        character.AnimationPlayer.Play(GameConstants.AnimationMove);
     }
 }

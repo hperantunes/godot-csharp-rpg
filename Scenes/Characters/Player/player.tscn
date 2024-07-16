@@ -42,6 +42,22 @@
 [ext_resource type="Texture2D" uid="uid://c3cnw8ivpcrju" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_005.png" id="37_3q6hc"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="41_33r1i"]
 
+[sub_resource type="Animation" id="Animation_2pf2b"]
+resource_name = "Dash"
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("32_6ij6w"), ExtResource("33_6x3ep"), ExtResource("34_53hcb"), ExtResource("35_hku5g"), ExtResource("36_2eoif"), ExtResource("37_3q6hc")]
+}
+
 [sub_resource type="Animation" id="Animation_vpsau"]
 resource_name = "Idle"
 loop_mode = 1
@@ -74,22 +90,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("1_kyp6t"), ExtResource("20_srtpj"), ExtResource("21_3tffm"), ExtResource("22_qisfp"), ExtResource("23_cm5xb"), ExtResource("24_ytsn0"), ExtResource("25_fnwfq"), ExtResource("26_8ynxw"), ExtResource("27_p0nqw"), ExtResource("28_0wptd"), ExtResource("29_nhxjf"), ExtResource("30_vbmdi")]
-}
-
-[sub_resource type="Animation" id="Animation_2pf2b"]
-resource_name = "Dash"
-step = 0.166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("32_6ij6w"), ExtResource("33_6x3ep"), ExtResource("34_53hcb"), ExtResource("35_hku5g"), ExtResource("36_2eoif"), ExtResource("37_3q6hc")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hhees"]
