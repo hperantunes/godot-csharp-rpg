@@ -9,7 +9,6 @@ public partial class Player : CharacterBody3D
     [Export] public StateMachine StateMachine;
 
     public Vector2 Direction = new();
-    public int Speed = 5;
 
     public override void _Input(InputEvent @event)
     {

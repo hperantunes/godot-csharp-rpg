@@ -3,6 +3,8 @@ using System;
 
 public partial class PlayerMoveState : PlayerState
 {
+    [Export(PropertyHint.Range, "0,20,0.1")] private float speed = 5;
+
     public override void _PhysicsProcess(double delta)
     {
         if (character.Direction == Vector2.Zero)
@@ -12,7 +14,7 @@ public partial class PlayerMoveState : PlayerState
         }
 
         character.Velocity = new(character.Direction.X, 0, character.Direction.Y);
-        character.Velocity *= character.Speed;
+        character.Velocity *= speed;
         character.MoveAndSlide();
         character.Flip();
     }
