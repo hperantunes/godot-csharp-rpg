@@ -4,9 +4,9 @@ using System;
 public partial class Player : CharacterBody3D
 {
     [ExportGroup("Required Nodes")]
-    [Export] public AnimationPlayer AnimationPlayer;
-    [Export] public Sprite3D Sprite;
-    [Export] public StateMachine StateMachine;
+    [Export] public AnimationPlayer AnimationPlayer { get; private set; }
+    [Export] public Sprite3D Sprite { get; private set; }
+    [Export] public StateMachine StateMachine { get; private set; }
 
     public Vector2 Direction = new();
 
