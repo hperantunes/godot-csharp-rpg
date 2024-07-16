@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://byeeqn6gvdhlk"]
+[gd_scene load_steps=6 format=3 uid="uid://byeeqn6gvdhlk"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main.cs" id="1_lwvjb"]
 [ext_resource type="PackedScene" uid="uid://cvlp06sjrdk3r" path="res://Scenes/Characters/Player/player.tscn" id="2_13hfk"]
 [ext_resource type="MeshLibrary" uid="uid://cir85o0pdrl1m" path="res://Resources/tiles.tres" id="3_w7u02"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g68e6"]
+size = Vector3(0.167084, 0.951721, 0.740295)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2l7m"]
+size = Vector3(2.26173, 7.93425, 5.83926)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_lwvjb")
@@ -29,3 +35,24 @@ data = {
 "cells": PackedInt32Array(65529, 65530, 1, 65530, 65530, 1, 65531, 65530, 1, 65532, 65530, 1, 65533, 65530, 1, 65534, 65530, 1, 65535, 65530, 1, 0, 65530, 1441795, 2, 65530, 655363, 3, 65530, 655361, 4, 65530, 655361, 5, 65530, 655361, 6, 65530, 655361, 0, 65526, 1441793, 0, 65522, 1441793, 2, 65526, 1441793, 2, 65522, 1441793, 131072, 65511, 1048577, 131072, 65515, 1048577, 131072, 65519, 1048577, 131074, 65507, 1048577, 131074, 65511, 1048577, 131074, 65515, 1048577, 131074, 65519, 1048577, 2, 65520, 3, 0, 65520, 1048579, 1, 65520, 1, 1, 65521, 2, 131074, 65523, 1441793, 131072, 65523, 1441793, 131072, 65527, 1441793, 131074, 65527, 1441793, 131072, 65530, 1441795, 131074, 65530, 655363, 131074, 65505, 3, 131073, 65505, 1, 131072, 65505, 1048579, 131072, 65508, 1048577, 131073, 65521, 5, 131072, 65521, 655363, 131074, 65521, 1441795, 65531, 65532, 1441793, 65531, 4, 1441793, 65531, 0, 1441798, 196607, 65530, 655361, 196606, 65530, 655361, 196605, 65530, 655361, 196604, 65530, 655361, 196603, 65530, 655361, 196602, 65530, 655361, 196601, 65530, 655361, 131075, 65530, 655361, 131076, 65530, 655361, 131077, 65530, 655361, 131078, 65530, 655361, 196603, 65532, 1048577, 196603, 0, 1048577, 196603, 4, 1048577, 7, 65530, 1441795, 131079, 65530, 1441795, 131079, 65526, 1441793, 131079, 65522, 1441793, 131079, 65518, 1441793, 131079, 65514, 1441793, 131079, 65510, 1441793, 7, 65526, 1441793, 7, 65522, 1441793, 7, 65518, 1441793, 7, 65514, 1441793, 7, 65510, 1441793, 9, 65510, 1441793, 9, 65514, 1441793, 9, 65518, 1441793, 9, 65522, 1441793, 9, 65526, 1441793, 9, 65530, 655363, 131081, 65530, 655363, 131081, 65527, 1048577, 131081, 65523, 1048577, 131081, 65519, 1048577, 131081, 65515, 1048577, 131081, 65511, 1048577, 131079, 65509, 1048579, 131081, 65509, 3, 9, 65509, 3, 7, 65509, 1048579, 8, 65509, 1, 131080, 65509, 1)
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="InvisibleWall" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -18, 3, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/InvisibleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00062561, -0.180817, -0.00283813)
+shape = SubResource("BoxShape3D_g68e6")
+
+[node name="InvisibleWall2" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95926, 2.84835, -8.18803)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/InvisibleWall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.419298, 2.15353, -3.20716)
+shape = SubResource("BoxShape3D_g2l7m")
+
+[node name="InvisibleWall3" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20484, 2.84835, -8.18803)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/InvisibleWall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.419298, 2.15353, -3.20716)
+shape = SubResource("BoxShape3D_g2l7m")
